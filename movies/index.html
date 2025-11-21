@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布拉德·皮特 - 电影作品</title>
+    <style>
+        :root {
+            --primary: #2c3e50; --secondary: #3498db; --tertiary: #f1c40f;
+            --bg-light: #f8f9fa; --bg-white: #fff; --text-main: #333; --text-light: #7f8c8d;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius-md: 10px; --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 'Microsoft YaHei', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; padding: 20px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .nav-bar {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); margin-bottom: 30px; overflow: hidden;
+        }
+        .nav-list { display: flex; flex-wrap: wrap; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            display: block; color: var(--bg-white); text-decoration: none;
+            padding: 16px 24px; font-size: 1rem; transition: var(--transition);
+        }
+        .nav-link:hover { background: var(--secondary); }
+        .nav-link.active { background: var(--secondary); font-weight: bold; }
+
+        .page-header {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 40px 30px; margin-bottom: 30px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;
+        }
+        .page-header p {
+            color: var(--text-light); font-size: 1.1rem;
+        }
+
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .movie-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .movie-poster {
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .movie-card:hover .movie-poster img {
+            transform: scale(1.05);
+        }
+        
+        .movie-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .movie-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .movie-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .movie-role {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .movie-desc {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .movie-genres {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .genre-tag {
+            background: #f1f1f1;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .movie-link {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.3s;
+            margin-top: auto;
+        }
+        
+        .movie-link:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 35px 20px; text-align: center;
+            color: var(--bg-white);
+            background-image: linear-gradient(rgba(44, 62, 80, 0.95), rgba(44, 62, 80, 1));
+            margin-top: 40px;
+        }
+        footer p { font-size: 1rem; margin-bottom: 10px; }
+        footer .copyright { font-size: 0.9rem; color: #bdc3c7; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .nav-link { padding: 14px 18px; font-size: 0.95rem; }
+            .page-header h1 { font-size: 2rem; }
+            .movies-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .nav-list { flex-direction: column; }
+            .page-header { padding: 20px 15px; }
+            .movies-grid { grid-template-columns: 1fr; }
+            .movie-poster { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="../personal-life.html" class="nav-link">个人生活</a></li>
+                <li class="nav-item"><a href="../awards.html" class="nav-link">奖项荣誉</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link active">电影作品</a></li>
+            </ul>
+        </nav>
+
+        <header class="page-header">
+            <h1>电影作品</h1>
+            <p>布拉德·皮特的演艺生涯代表作</p>
+        </header>
+
+        <main class="movies-grid">
+            <!-- 末路狂花 -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="../images/movie-thelma-louise.jpg" alt="末路狂花">
+                    <div class="movie-year">1991</div>
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">末路狂花</h3>
+                    <div class="movie-role">饰演: J.D.</div>
+                    <div class="movie-genres">
+                        <span class="genre-tag">剧情</span>
+                        <span class="genre-tag">犯罪</span>
+                        <span class="genre-tag">公路</span>
+                    </div>
+                    <p class="movie-desc">皮特的银幕处女作，饰演一个魅力十足的流浪汉，虽然戏份不多但令人印象深刻，从此一举成名。</p>
+                    <a href="thelma-louise.html" class="movie-link">查看详情</a>
+                </div>
+            </div>
+
+            <!-- 燃情岁月 -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="../images/movie-legend-of-the-fall.jpg" alt="燃情岁月">
+                    <div class="movie-year">1994</div>
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">燃情岁月</h3>
+                    <div class="movie-role">饰演: 崔斯汀</div>
+                    <div class="movie-genres">
+                        <span class="genre-tag">剧情</span>
+                        <span class="genre-tag">爱情</span>
+                        <span class="genre-tag">西部</span>
+                    </div>
+                    <p class="movie-desc">饰演狂野不羁的崔斯汀，成为皮特最经典的银幕形象之一，展现了他出色的演技和独特的魅力。</p>
+                    <a href="legend-of-the-fall.html" class="movie-link">查看详情</a>
+                </div>
+            </div>
+
+            <!-- 七宗罪 -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="../images/movie-seven.jpg" alt="七宗罪">
+                    <div class="movie-year">1995</div>
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">七宗罪</h3>
+                    <div class="movie-role">饰演: 大卫·米尔斯</div>
+                    <div class="movie-genres">
+                        <span class="genre-tag">剧情</span>
+                        <span class="genre-tag">悬疑</span>
+                        <span class="genre-tag">犯罪</span>
+                    </div>
+                    <p class="movie-desc">与摩根·弗里曼搭档，饰演冲动的年轻警探，影片成为90年代最经典的悬疑犯罪片之一。</p>
+                    <a href="seven.html" class="movie-link">查看详情</a>
+                </div>
+            </div>
+
+            <!-- 搏击俱乐部 -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="../images/movie-fight-club.jpg" alt="搏击俱乐部">
+                    <div class="movie-year">1999</div>
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">搏击俱乐部</h3>
+                    <div class="movie-role">饰演: 泰勒·德顿</div>
+                    <div class="movie-genres">
+                        <span class="genre-tag">剧情</span>
+                        <span class="genre-tag">悬疑</span>
+                        <span class="genre-tag">惊悚</span>
+                    </div>
+                    <p class="movie-desc">饰演魅力非凡的泰勒·德顿，塑造了影史最具标志性的角色之一，探讨现代社会的异化与身份认同。</p>
+                    <a href="fight-club.html" class="movie-link">查看详情</a>
+                </div>
+            </div>
+
+            <!-- 本杰明·巴顿奇事 -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="../images/movie-the-curious-case.jpg" alt="本杰明·巴顿奇事">
+                    <div class="movie-year">2008</div>
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">本杰明·巴顿奇事</h3>
+                    <div class="movie-role">饰演: 本杰明·巴顿</div>
+                    <div class="movie-genres">
+                        <span class="genre-tag">剧情</span>
+                        <span class="genre-tag">爱情</span>
+                        <span class="genre-tag">奇幻</span>
+                    </div>
+                    <p class="movie-desc">饰演逆生长的本杰明·巴顿，从老年到青年的精彩演绎获得奥斯卡最佳男主角提名。</p>
+                    <a href="benjamin-button.html" class="movie-link">查看详情</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>布拉德·皮特个人介绍网站</p>
+            <p class="copyright">制作人：彭书朗（计算机2510班 U202515000）</p>
+        </footer>
+    </div>
+</body>
+</html>

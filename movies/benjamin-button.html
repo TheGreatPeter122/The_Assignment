@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本杰明·巴顿奇事 - 布拉德·皮特电影作品</title>
+    <style>
+        :root {
+            --primary: #2c3e50; --secondary: #3498db; --tertiary: #f1c40f;
+            --bg-light: #f8f9fa; --bg-white: #fff; --text-main: #333; --text-light: #7f8c8d;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius-md: 10px; --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 'Microsoft YaHei', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; padding: 20px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .nav-bar {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); margin-bottom: 30px; overflow: hidden;
+        }
+        .nav-list { display: flex; flex-wrap: wrap; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            display: block; color: var(--bg-white); text-decoration: none;
+            padding: 16px 24px; font-size: 1rem; transition: var(--transition);
+        }
+        .nav-link:hover { background: var(--secondary); }
+        .nav-link.active { background: var(--secondary); font-weight: bold; }
+
+        .movie-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-btn:hover {
+            text-decoration: underline;
+        }
+
+        .movie-header {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .movie-poster-large {
+            width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .movie-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .movie-title-main {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .movie-tagline {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .movie-meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .meta-value {
+            color: #555;
+        }
+        
+        .movie-overview {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .movie-content {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+        }
+        
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .plot-summary {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .character-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .character-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .character-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .character-role {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .movies-navigation {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 20px 30px;
+            margin-bottom: 30px;
+        }
+        
+        .movies-navigation h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .movies-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .movie-nav-item {
+            padding: 8px 15px;
+            background: #f1f1f1;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .movie-nav-item.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .movie-nav-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 35px 20px; text-align: center;
+            color: var(--bg-white);
+            background-image: linear-gradient(rgba(44, 62, 80, 0.95), rgba(44, 62, 80, 1));
+        }
+        footer p { font-size: 1rem; margin-bottom: 10px; }
+        footer .copyright { font-size: 0.9rem; color: #bdc3c7; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .nav-link { padding: 14px 18px; font-size: 0.95rem; }
+            .movie-header { grid-template-columns: 1fr; }
+            .movie-poster-large { max-width: 300px; margin: 0 auto; }
+        }
+        @media (max-width: 480px) {
+            .nav-list { flex-direction: column; }
+            .movie-header, .movie-content { padding: 20px 15px; }
+            .movie-title-main { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="../index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="../personal-life.html" class="nav-link">个人生活</a></li>
+                <li class="nav-item"><a href="../awards.html" class="nav-link">奖项荣誉</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link active">电影作品</a></li>
+            </ul>
+        </nav>
+
+        <div class="movie-nav">
+            <a href="fight-club.html" class="nav-btn">← 上一部：搏击俱乐部</a>
+            <a href="index.html" class="nav-btn">返回电影列表 →</a>
+        </div>
+
+        <header class="movie-header">
+            <img src="../images/movie-the-curious-case.jpg" alt="本杰明·巴顿奇事" class="movie-poster-large">
+            <div class="movie-details">
+                <h1 class="movie-title-main">本杰明·巴顿奇事</h1>
+                <div class="movie-tagline">The Curious Case of Benjamin Button</div>
+                
+                <div class="movie-meta-info">
+                    <div class="meta-item">
+                        <span class="meta-label">上映年份</span>
+                        <span class="meta-value">2008</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">导演</span>
+                        <span class="meta-value">大卫·芬奇</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">编剧</span>
+                        <span class="meta-value">艾瑞克·罗斯</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">类型</span>
+                        <span class="meta-value">剧情 / 爱情 / 奇幻</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">片长</span>
+                        <span class="meta-value">166分钟</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">制片国家</span>
+                        <span class="meta-value">美国</span>
+                    </div>
+                </div>
+                
+                <div class="movie-overview">
+                    <p>《本杰明·巴顿奇事》是布拉德·皮特与大卫·芬奇的第三次合作，也是皮特职业生涯中最具挑战性的角色之一。他凭借对本杰明·巴顿这一逆生长角色的精彩演绎，获得了奥斯卡最佳男主角提名。影片以其奇幻的设定、唯美的画面和深刻的主题，成为了一部感人至深的经典之作。</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="movie-content">
+            <section class="content-section">
+                <h2 class="section-title">剧情简介</h2>
+                <div class="plot-summary">
+                    <p>第一次世界大战结束的当天，新奥尔良的巴顿家诞生了一个奇特的婴儿——本杰明·巴顿（布拉德·皮特 饰）。他一出生就拥有80岁老人的外貌和身体机能，被父亲托马斯遗弃在养老院门口，由黑人妇女奎尼（塔拉吉·P·汉森 饰）收养。</p>
+                    <p>本杰明在养老院长大，结识了小女孩黛茜（凯特·布兰切特 饰），两人成为挚友。随着时间推移，本杰明逐渐变得年轻，他离开养老院出海远航，经历了二战、爱情与失去，最终在中年时与黛茜重逢相恋。</p>
+                    <p>然而，本杰明的“逆生长”让他们的爱情充满遗憾——当黛茜老去时，本杰明却变成了孩童，最终以婴儿形态在黛茜怀中离世。影片通过本杰明的一生，探讨了时间、爱情与生命的意义，用奇幻的设定讲述了最真实的人性故事。</p>
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <h2 class="section-title">角色介绍</h2>
+                <div class="character-list">
+                    <div class="character-item">
+                        <div class="character-name">本杰明·巴顿</div>
+                        <div class="character-role">布拉德·皮特 饰演</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-name">黛茜</div>
+                        <div class="character-role">凯特·布兰切特 饰演</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-name">奎尼</div>
+                        <div class="character-role">塔拉吉·P·汉森 饰演</div>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-name">托马斯·巴顿</div>
+                        <div class="character-role">杰森·弗莱明 饰演</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="content-section">
+                <h2 class="section-title">影片评价</h2>
+                <p>《本杰明·巴顿奇事》以其独特的叙事视角和精湛的技术制作，成为了2008年最受瞩目的电影之一。影片的特效制作耗时五年，使用了CGI、动作捕捉和化妆技术，布拉德·皮特的老年形态通过3D扫描和数字合成完成，年轻形态则结合了替身演员与面部替换技术，获得了奥斯卡最佳视觉效果奖。</p>
+                <p>布拉德·皮特在片中的表演细腻而动人，他通过眼神和肢体语言的细微变化，完美呈现了本杰明从老年到青年再到孩童的心理转变。尤其是晚年变回孩童时的眼神，充满了纯真与迷茫，被影评人称为“演技的巅峰之作”。</p>
+                <p>影片获得13项奥斯卡提名，最终斩获3项大奖（最佳视觉效果、最佳化妆、最佳艺术指导），布拉德·皮特也凭借此片获得金球奖最佳男主角提名，进一步巩固了他在好莱坞的实力派地位。《本杰明·巴顿奇事》不仅是一部技术上的杰作，更是一部关于生命、爱情与时间的哲学思考，让观众在感动中领悟生命的真谛。</p>
+            </section>
+        </main>
+
+        <div class="movies-navigation">
+            <h3>浏览其他作品</h3>
+            <div class="movies-list">
+                <div class="movie-nav-item"><a href="thelma-louise.html">末路狂花</a></div>
+                <div class="movie-nav-item"><a href="legend-of-the-fall.html">燃情岁月</a></div>
+                <div class="movie-nav-item"><a href="seven.html">七宗罪</a></div>
+                <div class="movie-nav-item"><a href="fight-club.html">搏击俱乐部</a></div>
+                <div class="movie-nav-item active">本杰明·巴顿奇事</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>布拉德·皮特个人介绍网站</p>
+            <p class="copyright">制作人：彭书朗（计算机2510班 U202515000）</p>
+        </footer>
+    </div>
+</body>
+</html>

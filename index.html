@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布拉德·皮特 - 简介</title>
+    <style>
+        :root {
+            --primary: #2c3e50; --secondary: #3498db; --tertiary: #f1c40f;
+            --bg-light: #f8f9fa; --bg-white: #fff; --text-main: #333; --text-light: #7f8c8d;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius-md: 10px; --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 'Microsoft YaHei', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; padding: 20px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .nav-bar {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); margin-bottom: 30px; overflow: hidden;
+        }
+        .nav-list { display: flex; flex-wrap: wrap; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            display: block; color: var(--bg-white); text-decoration: none;
+            padding: 16px 24px; font-size: 1rem; transition: var(--transition);
+        }
+        .nav-link:hover { background: var(--secondary); }
+        .nav-link.active { background: var(--secondary); font-weight: bold; }
+
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('images/brad-pitt-background.jpg'); /* 更换图片+调浅渐变 */
+    background-size: cover;
+    background-position: top center; /* 顶部居中对齐 */
+    height: 600px; /* 增高区域 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 30px;
+    background-repeat: no-repeat; /* 防止图片重复（可选，cover模式下一般不需要） */
+}
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .intro-section {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .intro-text h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .intro-image {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .movies-preview {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .movie-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .movie-poster {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+        
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .movie-card:hover .movie-poster img {
+            transform: scale(1.05);
+        }
+        
+        .movie-info {
+            padding: 15px;
+        }
+        
+        .movie-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .movie-year {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .movie-link {
+            display: inline-block;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .movie-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 35px 20px; text-align: center;
+            color: var(--bg-white);
+            background-image: linear-gradient(rgba(44, 62, 80, 0.95), rgba(44, 62, 80, 1));
+        }
+        footer p { font-size: 1rem; margin-bottom: 10px; }
+        footer .copyright { font-size: 0.9rem; color: #bdc3c7; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .nav-link { padding: 14px 18px; font-size: 0.95rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .intro-section { grid-template-columns: 1fr; }
+            .movies-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .nav-list { flex-direction: column; }
+            .hero-content h1 { font-size: 2rem; }
+            .movies-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link active">首页</a></li>
+                <li class="nav-item"><a href="personal-life.html" class="nav-link">个人生活</a></li>
+                <li class="nav-item"><a href="awards.html" class="nav-link">奖项荣誉</a></li>
+                <li class="nav-item"><a href="movies/index.html" class="nav-link">电影作品</a></li>
+            </ul>
+        </nav>
+
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1>布拉德·皮特</h1>
+                <p>William Bradley Pitt | 1963-至今</p>
+                <a href="movies/index.html" class="btn">探索电影作品</a>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-text">
+                <h2>传奇演员的演艺生涯</h2>
+                <p>布拉德·皮特是当代好莱坞最具魅力和才华的演员之一。他凭借俊朗的外貌和精湛的演技，成为全球影迷心中的偶像。</p>
+                <p>从1991年的《末路狂花》首次亮相银幕，到《燃情岁月》中的崔斯汀、《七宗罪》中的米尔斯、《搏击俱乐部》中的泰勒·德顿，再到《本杰明·巴顿奇事》中的奇幻人生，皮特塑造了无数经典角色。</p>
+                <p>他不仅是一位杰出的演员，还是一位成功的制片人，凭借《为奴十二年》获得奥斯卡最佳影片奖。2020年，他凭借《好莱坞往事》获得奥斯卡最佳男配角奖，实至名归。</p>
+                <a href="personal-life.html" class="btn">了解更多</a>
+            </div>
+            <div class="intro-image">
+                <img src="images/brad-pitt-intro.jpg" alt="布拉德·皮特">
+            </div>
+        </section>
+
+        <section class="movies-preview">
+            <h2 class="section-title">经典作品</h2>
+            <div class="movies-grid">
+                <!-- 末路狂花 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="images/movie-thelma-louise.jpg" alt="末路狂花">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-title">末路狂花</div>
+                        <div class="movie-year">1991</div>
+                        <a href="movies/thelma-louise.html" class="movie-link">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 燃情岁月 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="images/movie-legend-of-the-fall.jpg" alt="燃情岁月">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-title">燃情岁月</div>
+                        <div class="movie-year">1994</div>
+                        <a href="movies/legend-of-the-fall.html" class="movie-link">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 七宗罪 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="images/movie-seven.jpg" alt="七宗罪">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-title">七宗罪</div>
+                        <div class="movie-year">1995</div>
+                        <a href="movies/seven.html" class="movie-link">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 搏击俱乐部 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="images/movie-fight-club.jpg" alt="搏击俱乐部">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-title">搏击俱乐部</div>
+                        <div class="movie-year">1999</div>
+                        <a href="movies/fight-club.html" class="movie-link">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 本杰明·巴顿奇事 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="images/movie-the-curious-case.jpg" alt="本杰明·巴顿奇事">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-title">本杰明·巴顿奇事</div>
+                        <div class="movie-year">2008</div>
+                        <a href="movies/benjamin-button.html" class="movie-link">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>布拉德·皮特个人介绍网站</p>
+            <p class="copyright">制作人：彭书朗（计算机2510班 U202515000）</p>
+        </footer>
+    </div>
+</body>
+</html>

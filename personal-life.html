@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布拉德·皮特 - 个人生活</title>
+    <style>
+        :root {
+            --primary: #2c3e50; --secondary: #3498db; --tertiary: #f1c40f;
+            --bg-light: #f8f9fa; --bg-white: #fff; --text-main: #333; --text-light: #7f8c8d;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius-md: 10px; --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 'Microsoft YaHei', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; padding: 20px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .nav-bar {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); margin-bottom: 30px; overflow: hidden;
+        }
+        .nav-list { display: flex; flex-wrap: wrap; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            display: block; color: var(--bg-white); text-decoration: none;
+            padding: 16px 24px; font-size: 1rem; transition: var(--transition);
+        }
+        .nav-link:hover { background: var(--secondary); }
+        .nav-link.active { background: var(--secondary); font-weight: bold; }
+
+        .page-header {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 40px 30px; margin-bottom: 30px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;
+        }
+        .page-header p {
+            color: var(--text-light); font-size: 1.1rem;
+        }
+
+        .personal-content {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 40px 30px; margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+        }
+        
+        .profile-image {
+            width: auto;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            align-self: flex-start;
+            background-color: #f5f5f5;
+            padding: 10px; 
+        }
+        
+        .profile-image img {
+            max-width: 280px; 
+            height: auto;
+            display: block;
+            border-radius: var(--radius-md);
+        }
+
+        .design-shapes {
+            width: 100%; 
+            height: 50px; 
+            margin-top: 15px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px; 
+        }
+
+
+        .line-shape {
+            background: none;
+            border: 2px solid var(--secondary); 
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .line-horizontal {
+            width: 60px;
+            height: 0;
+            border-top-width: 2px;
+            border-bottom-width: 2px;
+            border-left: none;
+            border-right: none;
+        }
+
+        .line-vertical {
+            width: 0;
+            height: 30px;
+            border-left-width: 2px;
+            border-right-width: 2px;
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .line-diagonal {
+            width: 40px;
+            height: 0;
+            border-top-width: 2px;
+            border-bottom-width: 2px;
+            border-left: none;
+            border-right: none;
+            transform: rotate(45deg);
+        }
+        .line-wave {
+            width: 50px;
+            height: 10px;
+            background: linear-gradient(45deg, transparent 33.333%, var(--secondary) 33.333%, var(--secondary) 66.666%, transparent 66.666%),
+                        linear-gradient(-45deg, transparent 33.333%, var(--secondary) 33.333%, var(--secondary) 66.666%, transparent 66.666%);
+            background-size: 20px 10px;
+        }
+
+        .design-shapes:hover .line-shape {
+            border-color: var(--tertiary); 
+            transform: scale(1.1);
+        }
+        .design-shapes:hover .line-wave {
+            background: linear-gradient(45deg, transparent 33.333%, var(--tertiary) 33.333%, var(--tertiary) 66.666%, transparent 66.666%),
+                        linear-gradient(-45deg, transparent 33.333%, var(--tertiary) 33.333%, var(--tertiary) 66.666%, transparent 66.666%);
+        }
+        
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .bio-section {
+            margin-bottom: 30px;
+        }
+        
+        .bio-section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .bio-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .fact-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .fact-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .fact-label {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 35px 20px; text-align: center;
+            color: var(--bg-white);
+            background-image: linear-gradient(rgba(44, 62, 80, 0.95), rgba(44, 62, 80, 1));
+        }
+        footer p { font-size: 1rem; margin-bottom: 10px; }
+        footer .copyright { font-size: 0.9rem; color: #bdc3c7; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .nav-link { padding: 14px 18px; font-size: 0.95rem; }
+            .page-header h1 { font-size: 2rem; }
+            .personal-content { grid-template-columns: 1fr; }
+            .fact-list { grid-template-columns: 1fr; }
+            .profile-image {
+                align-self: center;
+                max-width: 300px;
+            }
+            .profile-image img { max-width: 280px; }
+            .design-shapes { height: 45px; }
+        }
+        @media (max-width: 480px) {
+            .nav-list { flex-direction: column; }
+            .page-header, .personal-content { padding: 20px 15px; }
+            .profile-image img { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="personal-life.html" class="nav-link active">个人生活</a></li>
+                <li class="nav-item"><a href="awards.html" class="nav-link">奖项荣誉</a></li>
+                <li class="nav-item"><a href="movies/index.html" class="nav-link">电影作品</a></li>
+            </ul>
+        </nav>
+
+        <header class="page-header">
+            <h1>个人生活</h1>
+            <p>布拉德·皮特的生平、家庭与个人经历</p>
+        </header>
+
+        <main class="personal-content">
+            <div class="profile-image">
+                <img src="images/brad-pitt-profile.jpg" alt="布拉德·皮特个人照片">
+            </div>
+            
+            <div class="profile-details">
+                <section class="bio-section">
+                    <h2>早年生活</h2>
+                    <p>布拉德·皮特（William Bradley Pitt）于1963年12月18日出生在美国俄克拉荷马州肖尼市，在密苏里州斯普林菲尔德长大。他是威廉·阿尔文·皮特和简·伊莱恩的三个孩子中的长子。</p>
+                    <p>皮特在密苏里大学主修广告美术设计，在只差两星期就毕业时，他收拾起所有的东西，装上他的破车，奔向好莱坞去追寻他的明星梦。他在好莱坞打了各种零工，包括做过司机、搬运工甚至扮演过吉祥物。</p>
+                    <p>初到好莱坞的几年，皮特只能在一些电视剧中客串小角色，直到1991年凭借《末路狂花》中的J.D.一角才真正崭露头角，从此开启了他的辉煌演艺生涯。</p>
+                </section>
+                
+                <section class="bio-section">
+                    <h2>家庭生活</h2>
+                    <p>皮特的第一段婚姻是与女演员詹妮弗·安妮斯顿，两人于2000年7月29日结婚，这段婚姻被媒体称为"好莱坞金童玉女"的结合。然而，由于工作繁忙和性格差异，两人于2005年1月宣布分居，同年10月正式离婚。</p>
+                    <p>2004年，皮特与安吉丽娜·朱莉因拍摄《史密斯夫妇》相识相恋，两人被媒体称为"Brangelina"。他们共育有六个孩子，其中三个是领养的（马多克斯、帕克斯、扎哈拉），三个是亲生的（希洛、诺克斯、薇薇安）。</p>
+                    <p>2014年8月23日，皮特与朱莉在法国米拉瓦尔城堡举行了一场小型私人婚礼。然而，这段婚姻仅维持了两年，2016年9月，朱莉提出离婚申请，理由是"无法调和的分歧"。此后双方因子女抚养权问题展开了长达五年的法律诉讼，直至2021年才达成和解。</p>
+                </section>
+                
+                <section class="bio-section">
+                    <h2>个人爱好与慈善</h2>
+                    <p>皮特是一位建筑设计爱好者，曾专门学习过建筑设计，并且积极参与了多个灾后重建项目。他也是一名艺术品收藏家，收藏了许多当代艺术品，包括安迪·沃霍尔、让-米歇尔·巴斯奎特等艺术家的作品。</p>
+                    <p>皮特积极参与慈善事业，他与朱莉共同创立了Jolie-Pitt基金会，致力于全球人道主义事业，包括为非洲难民提供医疗支持、帮助灾区重建家园等。他也是"Make It Right"基金会的创始人，该组织致力于为新奥尔良卡特里娜飓风灾民建造环保住房。</p>
+                    <p>此外，皮特还关注气候变化、难民权益等社会议题，多次参与联合国难民署的公益活动，并在2010年海地地震后亲自前往灾区参与救援工作。他曾表示："作为公众人物，我们有责任利用自己的影响力，为需要帮助的人发声。"</p>
+                </section>
+                
+                <section class="bio-section">
+                    <h2>个人档案</h2>
+                    <ul class="fact-list">
+                        <li class="fact-item">
+                            <div class="fact-label">全名</div>
+                            <div>William Bradley Pitt</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">出生日期</div>
+                            <div>1963年12月18日</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">出生地</div>
+                            <div>美国俄克拉荷马州肖尼市</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">身高</div>
+                            <div>180cm</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">星座</div>
+                            <div>射手座</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">母校</div>
+                            <div>密苏里大学</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">代表作品</div>
+                            <div>《燃情岁月》《七宗罪》《搏击俱乐部》《本杰明·巴顿奇事》</div>
+                        </li>
+                        <li class="fact-item">
+                            <div class="fact-label">主要奖项</div>
+                            <div>奥斯卡最佳男配角、金球奖最佳男配角、英国电影学院奖最佳男配角</div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>布拉德·皮特个人介绍网站</p>
+            <p class="copyright">制作人：彭书朗（计算机2510班 U202515000）</p>
+        </footer>
+    </div>
+</body>
+</html>

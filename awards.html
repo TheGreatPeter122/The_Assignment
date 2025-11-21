@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布拉德·皮特 - 奖项荣誉</title>
+    <style>
+        :root {
+            --primary: #2c3e50; --secondary: #3498db; --tertiary: #f1c40f;
+            --bg-light: #f8f9fa; --bg-white: #fff; --text-main: #333; --text-light: #7f8c8d;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05); --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius-md: 10px; --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', 'Microsoft YaHei', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; padding: 20px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .nav-bar {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); margin-bottom: 30px; overflow: hidden;
+        }
+        .nav-list { display: flex; flex-wrap: wrap; list-style: none; }
+        .nav-item { position: relative; }
+        .nav-link {
+            display: block; color: var(--bg-white); text-decoration: none;
+            padding: 16px 24px; font-size: 1rem; transition: var(--transition);
+        }
+        .nav-link:hover { background: var(--secondary); }
+        .nav-link.active { background: var(--secondary); font-weight: bold; }
+
+        .page-header {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 40px 30px; margin-bottom: 30px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;
+        }
+        .page-header p {
+            color: var(--text-light); font-size: 1.1rem;
+        }
+
+        .awards-content {
+            background: var(--bg-white); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 40px 30px; margin-bottom: 30px;
+        }
+        
+        .award-category {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 30px;
+        }
+        
+        .award-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .award-category h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .award-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .award-item {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .award-year {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .award-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .award-work {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .award-result {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        
+        .award-won {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .award-nominated {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        footer {
+            background: var(--primary); border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm); padding: 35px 20px; text-align: center;
+            color: var(--bg-white);
+            background-image: linear-gradient(rgba(44, 62, 80, 0.95), rgba(44, 62, 80, 1));
+        }
+        footer p { font-size: 1rem; margin-bottom: 10px; }
+        footer .copyright { font-size: 0.9rem; color: #bdc3c7; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) {
+            .nav-link { padding: 14px 18px; font-size: 0.95rem; }
+            .page-header h1 { font-size: 2rem; }
+            .award-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .nav-list { flex-direction: column; }
+            .page-header, .awards-content { padding: 20px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="personal-life.html" class="nav-link">个人生活</a></li>
+                <li class="nav-item"><a href="awards.html" class="nav-link active">奖项荣誉</a></li>
+                <li class="nav-item"><a href="movies/index.html" class="nav-link">电影作品</a></li>
+            </ul>
+        </nav>
+
+        <header class="page-header">
+            <h1>奖项与荣誉</h1>
+            <p>布拉德·皮特职业生涯中的重要奖项提名与获奖记录</p>
+        </header>
+
+        <main class="awards-content">
+            <section class="award-category">
+                <h2>奥斯卡金像奖</h2>
+                <div class="award-list">
+                    <div class="award-item">
+                        <div class="award-year">2020</div>
+                        <div class="award-title">最佳男配角</div>
+                        <div class="award-work">《好莱坞往事》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2020</div>
+                        <div class="award-title">最佳影片（制片人）</div>
+                        <div class="award-work">《极速风流》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2014</div>
+                        <div class="award-title">最佳影片（制片人）</div>
+                        <div class="award-work">《为奴十二年》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2009</div>
+                        <div class="award-title">最佳男主角</div>
+                        <div class="award-work">《本杰明·巴顿奇事》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2009</div>
+                        <div class="award-title">最佳男配角</div>
+                        <div class="award-work">《阅后即焚》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="award-category">
+                <h2>金球奖</h2>
+                <div class="award-list">
+                    <div class="award-item">
+                        <div class="award-year">2020</div>
+                        <div class="award-title">电影类最佳男配角</div>
+                        <div class="award-work">《好莱坞往事》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2016</div>
+                        <div class="award-title">电影类最佳男配角</div>
+                        <div class="award-work">《大空头》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2009</div>
+                        <div class="award-title">电影类剧情片最佳男主角</div>
+                        <div class="award-work">《本杰明·巴顿奇事》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2007</div>
+                        <div class="award-title">电影类音乐/喜剧片最佳男主角</div>
+                        <div class="award-work">《通天塔》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">1996</div>
+                        <div class="award-title">电影类剧情片最佳男主角</div>
+                        <div class="award-work">《十二猴子》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">1995</div>
+                        <div class="award-title">电影类剧情片最佳男主角</div>
+                        <div class="award-work">《燃情岁月》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="award-category">
+                <h2>英国电影学院奖</h2>
+                <div class="award-list">
+                    <div class="award-item">
+                        <div class="award-year">2020</div>
+                        <div class="award-title">最佳男配角</div>
+                        <div class="award-work">《好莱坞往事》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2014</div>
+                        <div class="award-title">最佳影片（制片人）</div>
+                        <div class="award-work">《为奴十二年》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2009</div>
+                        <div class="award-title">最佳男主角</div>
+                        <div class="award-work">《本杰明·巴顿奇事》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2007</div>
+                        <div class="award-title">最佳男配角</div>
+                        <div class="award-work">《通天塔》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">1996</div>
+                        <div class="award-title">最佳男配角</div>
+                        <div class="award-work">《十二猴子》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="award-category">
+                <h2>其他重要奖项</h2>
+                <div class="award-list">
+                    <div class="award-item">
+                        <div class="award-year">2020</div>
+                        <div class="award-title">美国演员工会奖最佳男配角</div>
+                        <div class="award-work">《好莱坞往事》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2016</div>
+                        <div class="award-title">美国演员工会奖最佳男配角</div>
+                        <div class="award-work">《大空头》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2009</div>
+                        <div class="award-title">美国演员工会奖最佳男主角</div>
+                        <div class="award-work">《本杰明·巴顿奇事》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">2007</div>
+                        <div class="award-title">美国演员工会奖最佳群戏</div>
+                        <div class="award-work">《通天塔》</div>
+                        <div class="award-result award-nominated">提名</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">1996</div>
+                        <div class="award-title">MTV电影奖最佳男演员</div>
+                        <div class="award-work">《十二猴子》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-year">1995</div>
+                        <div class="award-title">MTV电影奖最佳男演员</div>
+                        <div class="award-work">《燃情岁月》</div>
+                        <div class="award-result award-won">获奖</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>布拉德·皮特个人介绍网站</p>
+            <p class="copyright">制作人：彭书朗（计算机2510班 U202515000）</p>
+        </footer>
+    </div>
+</body>
+</html>
